@@ -1,0 +1,14 @@
+/* Isso vai mudar a cor do título principal da sua página */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Isso vai dar um estilo melhor para a sua lista de livros */
+ul {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    list-style-type: none;
+}
