@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'biblioteca.wsgi.application'
 
 load_dotenv()
 DATABASES = {
-'default': {
-'NAME': os.getenv('DB_NAME'),
-'PASSWORD': os.getenv('DB_PASSWORD'),
-}
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 

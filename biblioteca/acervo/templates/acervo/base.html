@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal da Biblioteca</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'acervo/estilo.css' %}">
+</head>
+<body>
+    <!-- Menu de Navegação Padrão -->
+    <header style="background: #333; color: white; padding: 10px 20px;">
+        <h2>📚 Minha Biblioteca</h2>
+        <nav>
+            <a href="{% url 'lista' %}" style="color: white; margin-right: 15px; text-decoration: none;">Ver Acervo</a>
+            <a href="{% url 'novo' %}" style="color: white; margin-right: 15px; text-decoration: none;">Cadastrar Livro</a>
+            <a href="/admin/" style="color: white; text-decoration: none;" target="_blank">Painel Admin</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Dinâmico das Páginas -->
+    <main style="padding: 20px;">
+        {% block conteudo %}
+        {% endblock %}
+    </main>
+
+    <!-- Rodapé Simples -->
+    <footer style="text-align: center; padding: 10px; margin-top: 20px; color: #666; font-size: 14px;">
+        <p>© 2026 - Portal de Biblioteca Django</p>
+    </footer>
+</body>
+</html>
