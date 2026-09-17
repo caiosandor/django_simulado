@@ -6,26 +6,34 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'acervo/estilo.css' %}">
 </head>
-<body>
-    <!-- Menu de Navegação Padrão -->
-    <header style="background: #333; color: white; padding: 10px 20px;">
-        <h2>📚 Minha Biblioteca</h2>
-        <nav>
-            <a href="{% url 'lista' %}" style="color: white; margin-right: 15px; text-decoration: none;">Ver Acervo</a>
-            <a href="{% url 'novo' %}" style="color: white; margin-right: 15px; text-decoration: none;">Cadastrar Livro</a>
-            <a href="/admin/" style="color: white; text-decoration: none;" target="_blank">Painel Admin</a>
+<body style="font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0;">
+
+    <!-- Barra de Navegação Superior com Botões -->
+    <header style="background: #343a40; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h2 style="margin: 0; font-size: 22px;">📚 Portal da Biblioteca</h2>
+        <nav style="display: flex; gap: 10px;">
+            <a href="{% url 'lista' %}" style="background: #007bff; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-weight: bold; transition: background 0.2s;">
+                🏠 Ver Acervo
+            </a>
+            <a href="{% url 'novo' %}" style="background: #28a745; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-weight: bold; transition: background 0.2s;">
+                ➕ Cadastrar Livro
+            </a>
+            <a href="/admin/" target="_blank" style="background: #6c757d; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-weight: bold; transition: background 0.2s;">
+                ⚙️ Painel Admin
+            </a>
         </nav>
     </header>
 
     <!-- Conteúdo Dinâmico das Páginas -->
-    <main style="padding: 20px;">
+    <main style="max-width: 900px; margin: 30px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
         {% block conteudo %}
         {% endblock %}
     </main>
 
     <!-- Rodapé Simples -->
-    <footer style="text-align: center; padding: 10px; margin-top: 20px; color: #666; font-size: 14px;">
-        <p>© 2026 - Portal de Biblioteca Django</p>
+    <footer style="text-align: center; padding: 15px; color: #6c757d; font-size: 14px; margin-top: 40px;">
+        <p>© 2026 - Sistema de Gerenciamento de Acervo</p>
     </footer>
+
 </body>
 </html>
