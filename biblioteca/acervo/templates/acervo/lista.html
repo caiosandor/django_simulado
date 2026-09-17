@@ -1,12 +1,56 @@
 {% extends 'acervo/base.html' %}
 
 {% block conteudo %}
-    <h1>Acervo de Livros</h1>
+    <h1>Acervo da Biblioteca</h1>
+
+    <!-- Formulário de Pesquisa e Filtros -->
+    <form method="get" style="background: #f4f4f4; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+        <h3>Pesquisar no Acervo</h3>
+        
+        <div style="margin-bottom: 10px;">
+            <label>Nome do Livro:</label><br>
+            <input type="text" name="nome" value="{{ request.GET.nome }}" placeholder="Digite o título..." style="padding: 5px; width: 300px;">
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label>Tipo de Acervo:</label><br>
+            <select name="tipo" style="padding: 5px; width: 310px;">
+                <option value="">Todos os tipos</option>
+                <option value="Físico" {% if request.GET.tipo == "Físico" %}selected{% endif %}>Físico</option>
+                <option value="Digital" {% if request.GET.tipo == "Digital" %}selected{% endif %}>Digital</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label>Categoria:</label><br>
+            <select name="categoria" style="padding: 5px; width: 310px;">
+                <option value="">Todas as categorias</option>
+                <option value="000" {% if request.GET.categoria == "000" %}selected{% endif %}>000 – Generalidades e Informação</option>
+                <option value="100" {% if request.GET.categoria == "100" %}selected{% endif %}>100 – Filosofia e Psicologia</option>
+                <option value="200" {% if request.GET.categoria == "200" %}selected{% endif %}>200 – Religião e Teologia</option>
+                <option value="300" {% if request.GET.categoria == "300" %}selected{% endif %}>300 – Ciências Sociais e Direito</option>
+                <option value="400" {% if request.GET.categoria == "400" %}selected{% endif %}>400 – Linguística e Idiomas</option>
+                <option value="500" {% if request.GET.categoria == "500" %}selected{% endif %}>500 – Ciências Puras</option>
+                <option value="600" {% if request.GET.categoria == "600" %}selected{% endif %}>600 – Ciências Aplicadas</option>
+                <option value="700" {% if request.GET.categoria == "700" %}selected{% endif %}>700 – Artes e Recreação</option>
+                <option value="800" {% if request.GET.categoria == "800" %}selected{% endif %}>800 – Literatura</option>
+                <option value="900" {% if request.GET.categoria == "900" %}selected{% endif %}>900 – História e Geografia</option>
+            </select>
+        </div>
+
+        <button type="submit" style="padding: 6px 15px; background: #333; color: white; border: none; cursor: pointer;">Filtrar</button>
+        <a href="{% url 'lista' %}" style="margin-left: 10px; text-decoration: none; color: #333;">Limpar Filtros</a>
+    </form>
+
+    <!-- Lista de Resultados -->
     <ul>
     {% for livro in livros %}
-        <li>{{ livro.titulo }} - {{ livro.autor }}</li>
+        <li style="margin-bottom: 10px;">
+            <strong>{{ livro.titulo }}</strong> - {{ livro.autor }} 
+            <br><small>Tipo: <em>{{ livro.tipo }}</em> | Categoria: <em>{{ livro.get_categoria_display }}</em></small>
+        </li>
     {% empty %}
-        <li>Nenhum livro cadastrado.</li>
+        <li>Nenhum livro encontrado com esses critérios.</li>
     {% endfor %}
     </ul>
 {% endblock %}
